@@ -1,0 +1,353 @@
+---
+swagger: "2.0"
+info:
+  description: ""
+  version: "0.1.0"
+  title: "Mailu REST API"
+  termsOfService: "https://mailu.io/terms"
+  contact:
+    name: "Betty Boo"
+    url: "https://mailu.io/support"
+    email: "betty.boo@mailu.io"
+  license:
+    name: "MIT"
+    url: "https://raw.githubusercontent.com/Mailu/Mailu/master/LICENSE.md"
+paths:
+  /user:
+    get:
+      description: "Returns all users from the system that the user has access to"
+      operationId: "user_get"
+      produces:
+      - "application/json"
+      parameters: []
+      responses:
+        200:
+          description: "A list of users."
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/user"
+      x-swagger-router-controller: "swagger_server.controllers.default_controller"
+  /alias:
+    get:
+      description: "Returns all aliases from the system that the user has access to"
+      operationId: "alias_get"
+      produces:
+      - "application/json"
+      parameters: []
+      responses:
+        200:
+          description: "A list of aliases."
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/alias"
+      x-swagger-router-controller: "swagger_server.controllers.default_controller"
+  /manager:
+    get:
+      description: "Returns all managers from the system that the user has access\
+        \ to"
+      operationId: "manager_get"
+      produces:
+      - "application/json"
+      parameters: []
+      responses:
+        200:
+          description: "A list of managers."
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/manager"
+      x-swagger-router-controller: "swagger_server.controllers.default_controller"
+  /token:
+    get:
+      description: "Returns all tokens from the system that the user has access to"
+      operationId: "token_get"
+      produces:
+      - "application/json"
+      parameters: []
+      responses:
+        200:
+          description: "A list of tokens."
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/token"
+      x-swagger-router-controller: "swagger_server.controllers.default_controller"
+  /domain:
+    get:
+      description: "Returns all domains from the system that the user has access to"
+      operationId: "domain_get"
+      produces:
+      - "application/json"
+      parameters: []
+      responses:
+        200:
+          description: "A list of domains."
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/domain"
+      x-swagger-router-controller: "swagger_server.controllers.default_controller"
+  /alternative:
+    get:
+      description: "Returns all alternatives from the system that the user has access\
+        \ to"
+      operationId: "alternative_get"
+      produces:
+      - "application/json"
+      parameters: []
+      responses:
+        200:
+          description: "A list of alternatives."
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/alternative"
+      x-swagger-router-controller: "swagger_server.controllers.default_controller"
+  /fetch:
+    get:
+      description: "Returns all fetchs from the system that the user has access to"
+      operationId: "fetch_get"
+      produces:
+      - "application/json"
+      parameters: []
+      responses:
+        200:
+          description: "A list of fetchs."
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/fetch"
+      x-swagger-router-controller: "swagger_server.controllers.default_controller"
+  /relay:
+    get:
+      description: "Returns all relays from the system that the user has access to"
+      operationId: "relay_get"
+      produces:
+      - "application/json"
+      parameters: []
+      responses:
+        200:
+          description: "A list of relays."
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/relay"
+      x-swagger-router-controller: "swagger_server.controllers.default_controller"
+definitions:
+  user:
+    type: "object"
+    properties:
+      created_at:
+        type: "string"
+      updated_at:
+        type: "string"
+      comment:
+        type: "string"
+      localpart:
+        type: "string"
+      password:
+        type: "string"
+      quota_bytes:
+        type: "integer"
+      global_admin:
+        type: "boolean"
+      enable_imap:
+        type: "boolean"
+      enable_pop:
+        type: "boolean"
+      forward_enabled:
+        type: "boolean"
+      forward_destination:
+        type: "string"
+      reply_enabled:
+        type: "boolean"
+      reply_subject:
+        type: "string"
+      reply_body:
+        type: "string"
+      displayed_name:
+        type: "string"
+      spam_enabled:
+        type: "boolean"
+      domain_name:
+        type: "string"
+      email:
+        type: "string"
+      spam_threshold:
+        type: "integer"
+      forward_keep:
+        type: "boolean"
+    example:
+      forward_keep: true
+      global_admin: true
+      localpart: "localpart"
+      enable_pop: true
+      created_at: "created_at"
+      quota_bytes: 0
+      forward_destination: "forward_destination"
+      reply_body: "reply_body"
+      password: "password"
+      domain_name: "domain_name"
+      spam_threshold: 6
+      updated_at: "updated_at"
+      displayed_name: "displayed_name"
+      comment: "comment"
+      spam_enabled: true
+      reply_enabled: true
+      reply_subject: "reply_subject"
+      forward_enabled: true
+      email: "email"
+      enable_imap: true
+  alias:
+    type: "object"
+    properties:
+      created_at:
+        type: "string"
+      updated_at:
+        type: "string"
+      comment:
+        type: "string"
+      localpart:
+        type: "string"
+      destination:
+        type: "string"
+      domain_name:
+        type: "string"
+      email:
+        type: "string"
+      wildcard:
+        type: "boolean"
+    example:
+      domain_name: "domain_name"
+      updated_at: "updated_at"
+      localpart: "localpart"
+      destination: "destination"
+      created_at: "created_at"
+      comment: "comment"
+      email: "email"
+      wildcard: true
+  token:
+    type: "object"
+    properties:
+      created_at:
+        type: "string"
+      updated_at:
+        type: "string"
+      comment:
+        type: "string"
+      id:
+        type: "integer"
+      user_email:
+        type: "string"
+      password:
+        type: "string"
+      ip:
+        type: "string"
+    example:
+      user_email: "user_email"
+      password: "password"
+      updated_at: "updated_at"
+      ip: "ip"
+      created_at: "created_at"
+      comment: "comment"
+      id: 0
+  domain:
+    type: "object"
+    properties:
+      created_at:
+        type: "string"
+      updated_at:
+        type: "string"
+      comment:
+        type: "string"
+    example:
+      updated_at: "updated_at"
+      created_at: "created_at"
+      comment: "comment"
+  manager:
+    type: "object"
+    properties:
+      domain_name:
+        type: "string"
+      user_email:
+        type: "string"
+    example:
+      domain_name: "domain_name"
+      user_email: "user_email"
+  alternative:
+    type: "object"
+    properties:
+      created_at:
+        type: "string"
+      updated_at:
+        type: "string"
+      comment:
+        type: "string"
+      name:
+        type: "string"
+      domain_name:
+        type: "string"
+    example:
+      domain_name: "domain_name"
+      updated_at: "updated_at"
+      name: "name"
+      created_at: "created_at"
+      comment: "comment"
+  fetch:
+    type: "object"
+    properties:
+      created_at:
+        type: "string"
+      updated_at:
+        type: "string"
+      comment:
+        type: "string"
+      id:
+        type: "integer"
+      user_email:
+        type: "string"
+      protocol:
+        type: "string"
+      host:
+        type: "string"
+      port:
+        type: "integer"
+      tls:
+        type: "boolean"
+      username:
+        type: "string"
+      password:
+        type: "string"
+    example:
+      user_email: "user_email"
+      protocol: "protocol"
+      password: "password"
+      updated_at: "updated_at"
+      port: 6
+      host: "host"
+      created_at: "created_at"
+      comment: "comment"
+      tls: true
+      id: 0
+      username: "username"
+  relay:
+    type: "object"
+    properties:
+      created_at:
+        type: "string"
+      updated_at:
+        type: "string"
+      comment:
+        type: "string"
+      name:
+        type: "string"
+      smtp:
+        type: "string"
+    example:
+      smtp: "smtp"
+      updated_at: "updated_at"
+      name: "name"
+      created_at: "created_at"
+      comment: "comment"
